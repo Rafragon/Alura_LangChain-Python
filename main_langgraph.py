@@ -51,7 +51,6 @@ class Rota(BaseModel):  # era TypedDict
     destino: Literal["praia", "montanha"]
 
 
-# ALTERAÇÃO: O prompt agora orienta a classificação sem quebrar o esquema JSON do TypedDict
 prompt_roteador = ChatPromptTemplate.from_messages(
     [
         ("system", "Classifique a solicitação do usuário identificando se o destino preferido é praia ou montanha."),
@@ -105,7 +104,7 @@ app = grafo.compile()
 
 
 async def main():
-    resposta = await app.ainvoke({"query": "Quero visitar um lugar para aproveitar a vista e com ótima vista."})
+    resposta = await app.ainvoke({"query": "Quero visitar um lugar para aproveitar a praia e o sol!"})
     print(resposta["resposta"])
 
 
